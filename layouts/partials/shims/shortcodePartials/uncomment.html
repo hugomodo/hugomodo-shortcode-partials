@@ -1,0 +1,14 @@
+{{ $examples := .content | findRE "{{</[*].+?[*]/>}}" | uniq }}
+
+{{ .context.Scratch.Set "content" .content }}
+
+{{ range $examples }}
+
+  {{ $content := . | replaceRE "{{</[*](.+?)[*]/>}}" "$1" }}
+
+  {{ $regex := printf "{{</[*](%s)[*]/>}}" $content }}
+
+  {{ $.context.Scratch.Set "content" ($.context.Scratch.Get "content" | replaceRE $regex "{{<$1>}}") }}
+{{ end }}
+
+{{ .context.Scratch.Get "content" }}

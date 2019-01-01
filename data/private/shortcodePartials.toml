@@ -8,5 +8,6 @@ shims = [
   "shims/shortcodePartials/relref.html",
   "shims/shortcodePartials/twitter.html",
   "shims/shortcodePartials/vimeo.html",
-  "shims/shortcodePartials/youtube.html"
+  "shims/shortcodePartials/youtube.html",
+  "shims/shortcodePartials/uncomment.html"
 ]
