@@ -1,6 +1,6 @@
-{{ $figures := .RawContent | findRE "{{< figure .+? >}}" | uniq }}
+{{ $figures := .content | findRE "{{< figure .+? >}}" | uniq }}
 
-{{ .Scratch.Set "content" .RawContent }}
+{{ .context.Scratch.Set "content" .content }}
 
 {{ range $figures }}
   {{ $src := . | replaceRE "{{< figure.*? src=\"(.+?)\" .*?>}}" "$1" }}
@@ -11,7 +11,7 @@
   */}}
   {{ $regex := printf "{{< figure.*? src=\"%s\" .*?>}}" $src }}
 
-  {{ $.Scratch.Set "content" ($.Scratch.Get "content" | replaceRE $regex (partial "shortcodes/figure.html" (dict "src" $src "title" $title))) }}
+  {{ $.context.Scratch.Set "content" ($.context.Scratch.Get "content" | replaceRE $regex (partial "shortcodes/figure.html" (dict "src" $src "title" $title))) }}
 {{ end }}
 
-{{ .Scratch.Get "content" | markdownify }}
+{{ .context.Scratch.Get "content" }}
