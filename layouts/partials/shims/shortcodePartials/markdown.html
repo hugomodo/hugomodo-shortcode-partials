@@ -1,0 +1,17 @@
+{{ $figures := .RawContent | findRE "{{< figure .+? >}}" | uniq }}
+
+{{ .Scratch.Set "content" .RawContent }}
+
+{{ range $figures }}
+  {{ $src := . | replaceRE "{{< figure.*? src=\"(.+?)\" .*?>}}" "$1" }}
+  {{ $title := . | replaceRE "{{< figure.*? title=\"(.+?)\" .*?>}}" "$1" }}
+  {{/* TODO: Extend support to the full set of shortcode attributes:
+    .class .link .target .rel .alt .caption .width .height
+    .attr .attrlink
+  */}}
+  {{ $regex := printf "{{< figure.*? src=\"%s\" .*?>}}" $src }}
+
+  {{ $.Scratch.Set "content" ($.Scratch.Get "content" | replaceRE $regex (partial "shortcodes/figure.html" (dict "src" $src "title" $title))) }}
+{{ end }}
+
+{{ .Scratch.Get "content" | markdownify }}

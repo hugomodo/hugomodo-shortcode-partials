@@ -1,0 +1,13 @@
+<section>
+  {{ if $.Site.Data.shortcodePartials.config.contentShim }}
+    {{ if in (slice "md" "markdown" "mdown" "mmark") .File.Ext }}
+      {{ partial "shims/shortcodePartials/markdown.html" . }}
+    {{ else }}
+      {{ if in (slice "html" "htm") .File.Ext }}
+        {{ partial "shims/shortcodePartials/html.html" . }}
+      {{ end }}
+    {{ end }}
+  {{ else }}
+    {{ .Content }}
+  {{ end }}
+</section>
