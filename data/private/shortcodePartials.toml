@@ -1,3 +1,12 @@
 shims = [
-  "shims/shortcodePartials/figure.html"
+  "shims/shortcodePartials/figure.html",
+  "shims/shortcodePartials/gist.html",
+  "shims/shortcodePartials/highlight.html",
+  "shims/shortcodePartials/instagram.html",
+  "shims/shortcodePartials/param.html",
+  "shims/shortcodePartials/ref.html",
+  "shims/shortcodePartials/relref.html",
+  "shims/shortcodePartials/twitter.html",
+  "shims/shortcodePartials/vimeo.html",
+  "shims/shortcodePartials/youtube.html"
 ]
