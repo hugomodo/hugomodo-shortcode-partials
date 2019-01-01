@@ -1,7 +1,7 @@
 shims = [
   "shims/shortcodePartials/figure.html",
   "shims/shortcodePartials/gist.html",
-  "shims/shortcodePartials/highlight.html",
+  # "shims/shortcodePartials/highlight.html",
   "shims/shortcodePartials/instagram.html",
   "shims/shortcodePartials/param.html",
   "shims/shortcodePartials/ref.html",
