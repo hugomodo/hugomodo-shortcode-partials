@@ -1,12 +1,6 @@
 <section>
   {{ if $.Site.Data.config.shortcodePartials.contentShim }}
-    {{ if in (slice "md" "markdown" "mdown" "mmark") .File.Ext }}
-      {{ partial "shims/shortcodePartials/markdown.html" (dict "context" . "content" .RawContent) }}
-    {{ else }}
-      {{ if in (slice "html" "htm") .File.Ext }}
-        {{ partial "shims/shortcodePartials/html.html" (dict "context" . "content" .RawContent) }}
-      {{ end }}
-    {{ end }}
+    {{ partial "shims/shortcodePartials/figure.html" (dict "context" . "content" .RawContent) }}
   {{ else }}
     {{ .Content }}
   {{ end }}
