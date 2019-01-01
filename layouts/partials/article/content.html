@@ -1,5 +1,5 @@
 <section>
-  {{ if $.Site.Data.shortcodePartials.config.contentShim }}
+  {{ if $.Site.Data.config.shortcodePartials.contentShim }}
     {{ if in (slice "md" "markdown" "mdown" "mmark") .File.Ext }}
       {{ partial "shims/shortcodePartials/markdown.html" . }}
     {{ else }}
