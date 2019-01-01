@@ -1,1 +1,18 @@
-{{ .content }}
+{{ $gists := .content | findRE "{{< gist .+? >}}" | uniq }}
+
+{{ .context.Scratch.Set "content" .content }}
+
+{{ range $gists }}
+
+  {{ $user := . | replaceRE "{{< gist (.+?) .+?>}}" "$1" }}
+  {{ $gist := . | replaceRE "{{< gist .+? (.+?) .*?>}}" "$1" }}
+
+  {{/* TODO: Add support for file. This isn't just as simple as given below. */}}
+  {{/* $file := . | replaceRE "{{< gist .+? .+? (.+?) >}}" "$1" */}}
+
+  {{ $regex := printf "{{< gist.*? %s %s .*?>}}" $user $gist }}
+
+  {{ $.context.Scratch.Set "content" ($.context.Scratch.Get "content" | replaceRE $regex (partial "shortcodes/gist.html" (slice $user $gist))) }}
+{{ end }}
+
+{{ .context.Scratch.Get "content" }}
