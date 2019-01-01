@@ -1,11 +1,3 @@
-{{/*
-  TODO: Strictly, all shortcodes are the same.
-  Having HTML and Markdown files makes no sense.
-  It does for imgproc... but..
-    Despite having a markdown usage option,
-    it isn't even necessary for highlight; that just works!
-*/}}
-
 {{ $figures := .content | findRE "{{< figure .+? >}}" | uniq }}
 
 {{ .context.Scratch.Set "content" .content }}
