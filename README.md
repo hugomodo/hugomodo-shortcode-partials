@@ -2,6 +2,9 @@
 
 Provides the default Hugo shortcodes as a collection of partials for use in templates.
 
+## Support on Patreon
+[![Patreon](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/bePatron?u=4780882)
+
 ## Support on Beerpay
 Hey dude! Help me out for a couple of :beers:!
 
